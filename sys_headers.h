@@ -13,5 +13,5 @@
 #include <sys/stat.h>
 #define ARGS_LIMIT 64
 void execute_command(char *);
-
+int main(__attribute__((unused))int ac, char **av);
 #endif
