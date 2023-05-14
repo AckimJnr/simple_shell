@@ -13,5 +13,6 @@
 #include <sys/stat.h>
 #define ARGS_LIMIT 64
 void execute_command(char *);
+void print_string(const char *);
 
 #endif

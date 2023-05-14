@@ -7,20 +7,18 @@
  * and executes the requested for program and its arguments
  * Return: Returns 0 on successful execution
  */
-
 int main(void)
 {
 	char *command = NULL;
-	ssize_t bytes_read;
+	ssize_t bytes_read = 0;
 	size_t buffer_size = 0;
 
 	while (1)
 	{
-		printf("$ ");
+		print_string("$ ");
 		bytes_read = getline(&command, &buffer_size, stdin);
 		if (bytes_read == -1)
 		{
-			putchar('\n');
 			exit(EXIT_FAILURE);
 		}
 		else if (bytes_read == 1)
