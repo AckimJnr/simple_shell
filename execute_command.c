@@ -25,6 +25,9 @@ void execute_command(char *command)
 
 	if (string_compare(args[0], "exit") == 0)
 		exit_program();
+	else if (string_compare(args[0], "env") == 0)
+		print_env();
+
 	args[argc] = NULL;
 
 	pid = fork();
