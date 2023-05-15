@@ -23,6 +23,8 @@ void execute_command(char *command)
 		token = strtok(NULL, " \t\n");
 	}
 
+	if (string_compare(args[0], "exit") == 0)
+		exit_program();
 	args[argc] = NULL;
 
 	pid = fork();

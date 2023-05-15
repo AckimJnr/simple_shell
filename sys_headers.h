@@ -14,4 +14,6 @@
 #define ARGS_LIMIT 64
 void execute_command(char *);
 void print_string(const char *);
+void exit_program(void);
+int string_compare(char *string_1, char *string_2);
 #endif
