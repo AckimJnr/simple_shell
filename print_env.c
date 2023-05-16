@@ -15,5 +15,4 @@ void print_env(void)
 		print_string(*env);
 		print_string("\n");
 	}
-	exit_program();
 }
