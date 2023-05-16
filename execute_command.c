@@ -43,7 +43,7 @@ void execute_command(char *command)
 	else if (pid == 0)
 	{
 		execve(args[0], args, NULL);
-		perror("./ashell");
+		perror("sh");
 		exit(1);
 	}
 	else

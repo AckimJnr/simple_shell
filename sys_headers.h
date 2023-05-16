@@ -19,5 +19,6 @@ int string_compare(char *string_1, char *string_2);
 extern char **environ;
 void print_env(void);
 ssize_t ashell_getline(char **line_ptr, size_t *buf_size, int fd);
+ssize_t read_chars(char **line_ptr, size_t *buf_size, int fd);
 
 #endif
