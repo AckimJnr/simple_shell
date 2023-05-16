@@ -16,7 +16,8 @@ int main(void)
 	while (1)
 	{
 		print_string("$ ");
-		bytes_read = getline(&command, &buffer_size, stdin);
+		bytes_read =
+			ashell_getline(&command, &buffer_size, STDIN_FILENO);
 		if (bytes_read == -1)
 		{
 			exit(EXIT_FAILURE);
