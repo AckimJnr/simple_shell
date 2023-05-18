@@ -20,5 +20,7 @@ extern char **environ;
 void print_env(void);
 ssize_t ashell_getline(char **line_ptr, size_t *buf_size, int fd);
 ssize_t read_chars(char **line_ptr, size_t *buf_size, int fd);
+char *_strtok(char *string, char *c);
+char *execute_from_path(char *cmd_name);
 
 #endif
