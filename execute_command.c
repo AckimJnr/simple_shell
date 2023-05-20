@@ -11,6 +11,7 @@ void execute_command(char *command)
 {
 	char *args[ARGS_LIMIT];
 	int argc = 0, exit_status;
+	static int session_counter = 1;
 	pid_t pid;
 
 	/* split the command to get the program path */
@@ -20,7 +21,7 @@ void execute_command(char *command)
 	{
 		args[argc] = token;
 		argc++;
-		token = _strtok(NULL, " \t\n");
+		token = strtok(NULL, " \t\n");
 	}
 
 	if (string_compare(args[0], "exit") == 0)
@@ -43,7 +44,13 @@ void execute_command(char *command)
 	else if (pid == 0)
 	{
 		execve(args[0], args, NULL);
-		perror("sh");
+		print_string("sh: ");
+		write(STDOUT_FILENO, &session_counter, sizeof(session_counter));
+		print_string(": ");
+		print_string(args[0]);
+		print_string(": ");
+		print_string("not found\n");
+		session_counter++;
 		exit(1);
 	}
 	else
