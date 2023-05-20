@@ -20,7 +20,7 @@ void execute_command(char *command)
 	{
 		args[argc] = token;
 		argc++;
-		token = strtok(NULL, " \t\n");
+		token = _strtok(NULL, " \t\n");
 	}
 
 	if (string_compare(args[0], "exit") == 0)
