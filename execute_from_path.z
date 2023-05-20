@@ -1,3 +1,4 @@
+#include "sys_headers.h" 
 /**
  * execute_from_path- Handles path in a shell
  * @cmd_name: command name
@@ -24,7 +25,7 @@ char *execute_from_path(char *cmd_name)
 		if (access(program_path, X_OK) == 0)
 			return (active_path);
 
-		token = strtok(NULL, ":");
+		token = _strtok(NULL, ":");
 	}
 	free(active_path);
 	return (NULL);

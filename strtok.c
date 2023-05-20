@@ -1,43 +1,38 @@
+#include "sys_headers.h"
 /**
  * _strtok- breaks string into a series of tokens using the delimiter
  * @string: string to be broken down
- * @c: character to be used to break down the string
+ * @delimeter: character to be used to break down the string
  *
  * Return: pointer to the first token found in the string
  */
 
-char *_strtok(char *string, char *c)
+char *_strtok(char *string, char *delimeter)
 {
-	if (!c)
+	static char  *generated_token = NULL;
+	char *token;
+	int i, j;
+
+	if (string == NULL && generated_token == NULL)
 		return (NULL);
 
-	static char *buffer;
+	if (string != NULL)
+		generated_token = string;
 
-	buffer = NULL;
+	token = generated_token;
 
-	if (!buffer)
-		buffer = string;
-
-	if (!*buffer)
-		return (NULL);
-
-	char *begin = buffer;
-	int i = 0;
-	int len = strlen(c);
-
-	while (*buffer && i != len)
+	for (i = 0; token[i] != '\0'; i++)
 	{
-		while (*buffer && *buffer != *c)
-			buffer += buffer 1;
-		while (buffer[i] == c[i] && i < len)
-			i += 1;
-		if (i == len)
+		for (j = 0; delimeter[j] != '\0'; j++)
 		{
-			*buffer = 0;
-			buffer += len;
+			if (token[i] == delimeter[j])
+			{
+				token[i] = '\0';
+				generated_token = &token[i + 1];
+				return (token);
+			}
 		}
-		else
-			buffer += 1;
 	}
+	generated_token = NULL;
 	return (token);
 }

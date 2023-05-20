@@ -11,6 +11,7 @@
 #include <dirent.h>
 #include <signal.h>
 #include <sys/stat.h>
+#include <stddef.h>
 #define ARGS_LIMIT 64
 void execute_command(char *);
 void print_string(const char *);
@@ -20,7 +21,7 @@ extern char **environ;
 void print_env(void);
 ssize_t ashell_getline(char **line_ptr, size_t *buf_size, int fd);
 ssize_t read_chars(char **line_ptr, size_t *buf_size, int fd);
-char *_strtok(char *string, char *c);
+char *_strtok(char *string, char *delimeter);
 char *execute_from_path(char *cmd_name);
 
 #endif
