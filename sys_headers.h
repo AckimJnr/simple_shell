@@ -13,7 +13,7 @@
 #include <sys/stat.h>
 #include <stddef.h>
 #define ARGS_LIMIT 64
-void execute_command(char *);
+void execute_command(char *,  int);
 void print_string(const char *);
 void exit_program(void);
 int string_compare(char *string_1, char *string_2);
@@ -24,5 +24,6 @@ ssize_t read_chars(char **line_ptr, size_t *buf_size, int fd);
 char *_strtok(char *string, char *delimeter);
 char *execute_from_path(char *cmd_name);
 size_t string_length(const char *str);
+void print_integer(int number);
 
 #endif

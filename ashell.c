@@ -12,6 +12,7 @@ int main(void)
 	char *command = NULL;
 	ssize_t bytes_read = 0;
 	size_t buffer_size = 0;
+	static int session_counter = 1;
 
 	while (1)
 	{
@@ -30,7 +31,7 @@ int main(void)
 		else if (command[bytes_read - 1] == '\n')
 			command[bytes_read - 1] = '\0';
 
-		execute_command(command);
+		execute_command(command, session_counter++);
 	}
 	free(command);
 	return (0);

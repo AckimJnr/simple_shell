@@ -2,16 +2,16 @@
 /**
  * execute_command - executes a given command
  * @command: command to be executed
+ * @session_counter: number of commands executed
  *
  * Description: This function will execute a command
  * by attempting to execute a programm at the dir given
  * Return: Returns nothing
  */
-void execute_command(char *command)
+void execute_command(char *command, int session_counter)
 {
 	char *args[ARGS_LIMIT];
 	int argc = 0, exit_status;
-	static int session_counter = 1;
 	pid_t pid;
 
 	/* split the command to get the program path */
@@ -45,12 +45,11 @@ void execute_command(char *command)
 	{
 		execve(args[0], args, NULL);
 		print_string("sh: ");
-		write(STDOUT_FILENO, &session_counter, sizeof(session_counter));
+		print_integer(session_counter++);
 		print_string(": ");
 		print_string(args[0]);
 		print_string(": ");
 		print_string("not found\n");
-		session_counter++;
 		exit(1);
 	}
 	else
