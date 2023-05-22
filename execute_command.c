@@ -44,12 +44,7 @@ void execute_command(char *command, int session_counter)
 	else if (pid == 0)
 	{
 		execve(args[0], args, NULL);
-		print_string("sh: ");
-		print_integer(session_counter++);
-		print_string(": ");
-		print_string(args[0]);
-		print_string(": ");
-		print_string("not found\n");
+		print_error(session_counter, args);
 		exit(1);
 	}
 	else
