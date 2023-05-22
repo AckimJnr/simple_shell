@@ -34,6 +34,6 @@ int main(void)
 		}
 		print_string("$ ");
 	}
-	free(command);
+	free(command);:
 	return (0);
 }

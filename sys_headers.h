@@ -15,7 +15,7 @@
 #define ARGS_LIMIT 64
 void execute_command(char *,  int);
 void print_string(const char *);
-void exit_program(void);
+void exit_program(int status);
 int string_compare(char *string_1, char *string_2);
 extern char **environ;
 void print_env(void);

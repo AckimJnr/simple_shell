@@ -25,7 +25,7 @@ void execute_command(char *command, int session_counter)
 	}
 
 	if (string_compare(args[0], "exit") == 0)
-		exit_program();
+		exit_program(0);
 	else if (string_compare(args[0], "env") == 0)
 	{
 		print_env();

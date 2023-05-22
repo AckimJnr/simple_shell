@@ -2,10 +2,11 @@
 
 /**
  * exit_program-exits the shell
+ * @status: exit status for a program
  *
  * Return: no return value
  */
-void exit_program(void)
+void exit_program(int status)
 {
-	exit(EXIT_SUCCESS);
+	exit(status);
 }
