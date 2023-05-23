@@ -9,7 +9,7 @@
 
 char *_strtok(char *string, char *delimeter)
 {
-	static char  *generated_token = NULL;
+	static char  *generated_token;
 	char *token;
 	int i, j;
 

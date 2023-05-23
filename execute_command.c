@@ -12,6 +12,7 @@ void execute_command(char *command, int session_counter)
 {
 	char *args[ARGS_LIMIT];
 	int argc = 0, exit_status;
+	int user_exitstatus = 0;
 	pid_t pid;
 
 	/* split the command to get the program path */
@@ -25,7 +26,19 @@ void execute_command(char *command, int session_counter)
 	}
 
 	if (string_compare(args[0], "exit") == 0)
+	{
+		if (argc > 1)
+		{
+			user_exitstatus = string_toint(args[1]);
+			if (user_exitstatus <= 0)
+			{
+				printf("sh: %d: exit: Illegal number: %s\n", session_counter, args[1]);
+				return;
+			}
+			exit_program(string_toint(args[1]));
+		}
 		exit_program(0);
+	}
 	else if (string_compare(args[0], "env") == 0)
 	{
 		print_env();
