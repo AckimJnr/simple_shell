@@ -9,10 +9,19 @@
  */
 int string_toint(char *str)
 {
-	int i, number = 0;
+	int i = 0, number = 0, sign = 1;
 
-	for (i = 0; str[i] >= '0' && str[i] <= '9'; ++i)
+	if (str[0] == '-')
+	{
+		sign = -1;
+		i++;
+	}
+	else if (str[0] == '+')
+	{
+		i++;
+	}
+	for (; str[i] >= '0' && str[i] <= '9'; ++i)
 		number = 10 * number + (str[i] - '0');
 
-	return (number);
+	return (sign * number);
 }
