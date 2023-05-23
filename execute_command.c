@@ -30,7 +30,7 @@ void execute_command(char *command, int session_counter)
 		if (argc > 1)
 		{
 			user_exitstatus = string_toint(args[1]);
-			if (user_exitstatus <= 0)
+			if (user_exitstatus < 0)
 			{
 				printf("sh: %d: exit: Illegal number: %s\n", session_counter, args[1]);
 				return;
