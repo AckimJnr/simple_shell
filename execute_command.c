@@ -26,7 +26,7 @@ void execute_command(char *command, int session_counter, char *program_name)
 		token = strtok(NULL, " \t\n");
 	}
 
-	if (built_infunction(argc, args, session_counter))
+	if (built_infunction(argc, args, session_counter, program_name))
 		return;
 
 	args[argc] = NULL;

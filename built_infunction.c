@@ -7,8 +7,8 @@
  *
  * Return: Returns 1 if the command is built in our shell or 0 it it is not
  */
-
-int built_infunction(int argc, char *args[], int session_counter)
+#define ERR "%s: %d: exit: Illegal number: %s\n"
+int built_infunction(int argc, char *args[], int s_counter, char *pg_name)
 {
 	int status = 0;
 
@@ -19,7 +19,7 @@ int built_infunction(int argc, char *args[], int session_counter)
 			status = string_toint(args[1]);
 			if (status < 0)
 			{
-				fprintf(stderr, "sh: %d: exit: Illegal number: %s\n", session_counter, args[1]);
+				fprintf(stderr, ERR, s_counter, args[0], pg_name);
 				return (1);
 			}
 			exit(status);

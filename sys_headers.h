@@ -28,6 +28,6 @@ size_t string_length(const char *str);
 void print_integer(int number);
 void print_error(int session_counter, char *args[], char *);
 int string_toint(char *str);
-int built_infunction(int argc, char *args[], int session_counter);
+int built_infunction(int argc, char *args[], int session_counter, char *);
 
 #endif
