@@ -17,6 +17,7 @@ void execute_command(char *command, int session_counter)
 	/* split the command to get the program path */
 	char *token = strtok(command, "\t\n");
 
+	session_counter++;
 	while (token != NULL && argc < ARGS_LIMIT - 1)
 	{
 		args[argc] = token;
@@ -24,8 +25,8 @@ void execute_command(char *command, int session_counter)
 		token = strtok(NULL, "\t\n");
 	}
 
-	if (built_infunction(argc, args, session_counter))
-		return;
+	/** if (built_infunction(argc, args, session_counter)) */
+	/**	return; */
 
 	args[argc] = NULL;
 
@@ -34,14 +35,14 @@ void execute_command(char *command, int session_counter)
 	if (pid < 0)
 	{
 		perror("fork");
-		exit(1);
+		exit(EXIT_FAILURE);
 	}
 	else if (pid == 0)
 	{
 		execve(args[0], args, NULL);
 		/** print_error(session_counter, args); **/
 		perror("./shell");
-		exit(1);
+		exit(EXIT_SUCCESS);
 	}
 	else
 		waitpid(pid, &exit_status, 0);
