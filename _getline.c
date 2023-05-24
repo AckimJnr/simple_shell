@@ -1,4 +1,5 @@
 #include "sys_headers.h"
+#define BUFFER_SIZE 4096
 /**
  * ashell_getline - custom getline to accept input from the
  * standard input stream
@@ -9,7 +10,7 @@
  * Return: Returns the number of lines read on success
  */
 
-ssize_t ashell_getline(char **line_ptr, size_t *buf_size, int fd)
+ssize_t _getline(char **line_ptr, size_t *buf_size, int fd)
 {
 	if (line_ptr == NULL || buf_size == NULL || fd < 0)
 		return (-1);

@@ -19,12 +19,12 @@ int built_infunction(int argc, char *args[], int session_counter)
 			status = string_toint(args[1]);
 			if (status < 0)
 			{
-				printf("sh: %d: exit: Illegal number: %s\n", session_counter, args[1]);
+				fprintf(stderr, "sh: %d: exit: Illegal number: %s\n", session_counter, args[1]);
 				return (1);
 			}
-			exit_program(status);
+			exit(status);
 		}
-		exit_program(status);
+		exit(status);
 	}
 
 	else if (string_compare(args[0], "env") == 0)

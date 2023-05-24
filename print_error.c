@@ -7,10 +7,12 @@
  *
  * Return: void
  */
-void print_error(int session_counter, char *args[])
+void print_error(int session_counter, char *args[], char *program_name)
 {
-	print_string("sh: ");
-	print_integer(session_counter++);
+	/** print_string("sh: ");*/
+	print_string(program_name);
+	print_string(" ");
+	print_integer(session_counter);
 	print_string(": ");
 	print_string(args[0]);
 	print_string(": ");
