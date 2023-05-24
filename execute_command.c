@@ -25,8 +25,8 @@ void execute_command(char *command, int session_counter)
 		token = strtok(NULL, "\t\n");
 	}
 
-	/** if (built_infunction(argc, args, session_counter)) */
-	/**	return; */
+	if (built_infunction(argc, args, session_counter))
+		return;
 
 	args[argc] = NULL;
 
@@ -41,7 +41,7 @@ void execute_command(char *command, int session_counter)
 	{
 		execve(args[0], args, NULL);
 		/** print_error(session_counter, args); **/
-		perror("./shell");
+		perror(args[0]);
 		exit(EXIT_SUCCESS);
 	}
 	else
