@@ -1,7 +1,7 @@
 #include "sys_headers.h"
 #define BUFFER_SIZE 4096
 /**
- * ashell_getline - custom getline to accept input from the
+ * _getline - custom getline to accept input from the
  * standard input stream
  * @line_ptr: pointer to the line to be retrieved from standard input
  * @buf_size: current size of the buffer

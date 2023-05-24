@@ -3,6 +3,7 @@
  * execute_command - executes a given command
  * @command: command to be executed
  * @session_counter: number of commands executed
+ * @program_name: name of the porgram used
  *
  * Description: This function will execute a command
  * by attempting to execute a programm at the dir given
