@@ -12,7 +12,7 @@
 #include <signal.h>
 #include <sys/stat.h>
 #include <stddef.h>
-#define ARGS_LIMIT 2097152
+#define ARGS_LIMIT 1024
 
 extern char **environ;
 void execute_command(char *,  int, char *);
