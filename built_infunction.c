@@ -20,7 +20,7 @@ int built_infunction(int argc, char *args[], int s_counter, char *pg_name)
 			status = string_toint(args[1]);
 			if (status < 0)
 			{
-				fprintf(stderr, ERR, s_counter, args[0], pg_name);
+				fprintf(stderr, ERR, pg_name, s_counter, args[0]);
 				return (1);
 			}
 			exit(status);
