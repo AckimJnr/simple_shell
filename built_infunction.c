@@ -17,15 +17,15 @@ int built_infunction(int argc, char *args[], int s_counter, char *pg_name)
 	{
 		if (argc > 1)
 		{
-			status = string_toint(args[1]);
+			status = atoi(args[1]);
 			if (status < 0)
 			{
 				fprintf(stderr, ERR, pg_name, s_counter, args[0]);
 				return (1);
 			}
-			exit(status);
+			exit_program(status);
 		}
-		exit(status);
+		exit_program(status);
 	}
 
 	else if (string_compare(args[0], "env") == 0)

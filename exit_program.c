@@ -8,5 +8,7 @@
  */
 void exit_program(int status)
 {
+	signal(SIGTERM, SIG_IGN);
+	kill(getpid(), SIGTERM);
 	exit(status);
 }
