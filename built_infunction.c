@@ -13,7 +13,7 @@ int built_infunction(int argc, char *args[], int s_counter, char *pg_name)
 {
 	int status = 0;
 
-	if (string_compare(args[0], "exit") == 0)
+	if (strcmp(args[0], "exit") == 0)
 	{
 		if (argc > 1)
 		{
@@ -25,10 +25,10 @@ int built_infunction(int argc, char *args[], int s_counter, char *pg_name)
 			}
 			exit_program(status);
 		}
-		exit_program(status);
+		exit_program(EXIT_SUCCESS);
 	}
 
-	else if (string_compare(args[0], "env") == 0)
+	else if (strcmp(args[0], "env") == 0)
 	{
 		print_env();
 		return (1);
