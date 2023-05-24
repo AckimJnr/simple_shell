@@ -15,13 +15,13 @@ void execute_command(char *command, int session_counter)
 	pid_t pid;
 
 	/* split the command to get the program path */
-	char *token = strtok(command, " \t\n");
+	char *token = strtok(command, "\t\n");
 
 	while (token != NULL && argc < ARGS_LIMIT - 1)
 	{
 		args[argc] = token;
 		argc++;
-		token = strtok(NULL, " \t\n");
+		token = strtok(NULL, "\t\n");
 	}
 
 	if (built_infunction(argc, args, session_counter))
@@ -39,7 +39,8 @@ void execute_command(char *command, int session_counter)
 	else if (pid == 0)
 	{
 		execve(args[0], args, NULL);
-		print_error(session_counter, args);
+		/** print_error(session_counter, args); **/
+		perror("./shell");
 		exit(1);
 	}
 	else
