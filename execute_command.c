@@ -11,15 +11,18 @@
  */
 void execute_command(char *command, int session_counter, char *program_name)
 {
-	char *args[ARGS_LIMIT];
-	int argc = 0, exit_status;
+	char **args;
+	size_t argc = 0;
+	int exit_status;
 	pid_t pid;
-
+	size_t args_len = strlen(command);
 	/* split the command to get the program path */
 	char *token = strtok(command, " \t\n");
 
+
+	args = malloc(sizeof(char) * args_len);
 	session_counter++;
-	while (token != NULL && argc < ARGS_LIMIT - 1)
+	while (token != NULL && argc < args_len - 1)
 	{
 		args[argc] = token;
 		argc++;
