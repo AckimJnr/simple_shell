@@ -1,13 +1,14 @@
 #include "sys_headers.h"
+#define ERR "%s: %d: exit: Illegal number: %s\n"
 /**
  * built_infunction - executes commands that are local to the shell
  * @args: arguments passed to the program
  * @argc: number of arguments passed
- * @session_counter: tracks number of commands that have been executed by shell
+ * @s_counter: tracks number of commands that have been executed by shell
+ * @pg_name: program name
  *
  * Return: Returns 1 if the command is built in our shell or 0 it it is not
  */
-#define ERR "%s: %d: exit: Illegal number: %s\n"
 int built_infunction(int argc, char *args[], int s_counter, char *pg_name)
 {
 	int status = 0;
