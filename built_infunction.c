@@ -4,12 +4,13 @@
  * built_infunction - executes commands that are local to the shell
  * @args: arguments passed to the program
  * @argc: number of arguments passed
- * @s_counter: tracks number of commands that have been executed by shell
+ * @s_c: tracks number of commands that have been executed by shell
  * @pg_name: program name
+ * @st: status
  *
  * Return: Returns 1 if the command is built in our shell or 0 it it is not
  */
-int built_infunction(int argc, char *args[], int s_counter, char *pg_name, int *st)
+int built_infunction(int argc, char *args[], int s_c, char *pg_name, int *st)
 {
 	int status = 0;
 
@@ -20,7 +21,7 @@ int built_infunction(int argc, char *args[], int s_counter, char *pg_name, int *
 			status = atoi(args[1]);
 			if (status < 0)
 			{
-				fprintf(stderr, ERR, pg_name, s_counter, args[0]);
+				fprintf(stderr, ERR, pg_name, s_c, args[0]);
 				exit_program(*st);
 			}
 			exit_program(*st);
