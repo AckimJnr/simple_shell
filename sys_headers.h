@@ -30,5 +30,6 @@ void print_error(int session_counter, char *args[], char *);
 int string_toint(char *str);
 int built_infunction(int argc, char *args[], int session_counter, char *, int *);
 void exec_path(char *args[], int s_count, char *pg_name);
+void _path(char *args[], int s_count, char *pg_name, int, int);
 
 #endif

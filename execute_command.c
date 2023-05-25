@@ -29,7 +29,6 @@ void execute_command(char *command, int session_counter, char *program_name)
 	if (built_infunction(argc, args, session_counter, program_name, &exit_status))
 		return;
 	args[argc] = NULL;
-	exec_path(args, session_counter, program_name);
 	pid = fork();
 
 	if (pid < 0)
