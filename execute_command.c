@@ -28,12 +28,10 @@ void execute_command(char *command, int session_counter, char *program_name)
 
 	if (built_infunction(argc, args, session_counter, program_name, &exit_status))
 		return;
-
 	args[argc] = NULL;
 	exec_path(args, session_counter, program_name);
-	
 	pid = fork();
-	
+
 	if (pid < 0)
 	{
 		perror("fork");
@@ -41,7 +39,6 @@ void execute_command(char *command, int session_counter, char *program_name)
 	}
 	else if (pid == 0)
 	{
-		
 		execve(args[0], args, NULL);
 		print_error(session_counter, args, program_name);
 		exit(EXIT_FAILURE);
