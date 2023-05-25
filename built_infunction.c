@@ -9,7 +9,7 @@
  *
  * Return: Returns 1 if the command is built in our shell or 0 it it is not
  */
-int built_infunction(int argc, char *args[], int s_counter, char *pg_name)
+int built_infunction(int argc, char *args[], int s_counter, char *pg_name, int *st)
 {
 	int status = 0;
 
@@ -21,11 +21,11 @@ int built_infunction(int argc, char *args[], int s_counter, char *pg_name)
 			if (status < 0)
 			{
 				fprintf(stderr, ERR, pg_name, s_counter, args[0]);
-				exit_program(EXIT_FAILURE);
+				exit_program(*st);
 			}
-			exit_program(status);
+			exit_program(*st);
 		}
-		exit_program(EXIT_SUCCESS);
+		exit_program(*st);
 	}
 
 	else if (strcmp(args[0], "env") == 0)

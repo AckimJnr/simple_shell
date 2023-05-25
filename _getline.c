@@ -25,4 +25,5 @@ ssize_t _getline(char **line_ptr, size_t *buf_size, int fd)
 	}
 
 	return (read_chars(line_ptr, buf_size, fd));
+
 }
