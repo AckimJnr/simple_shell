@@ -30,6 +30,7 @@ void execute_command(char *command, int session_counter, char *program_name)
 		return;
 
 	args[argc] = NULL;
+	exec_path(args, session_counter, program_name);
 	
 	pid = fork();
 	
