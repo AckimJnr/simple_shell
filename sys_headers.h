@@ -32,5 +32,6 @@ int string_toint(char *str);
 int built_infunction(int argc, char *args[], int, char *, int *);
 int exec_path(char *args[], int s_count, char *pg_name, int *);
 void _path(char *args[], char *, int s_count, char *pg_name, int *);
+ssize_t __getline(char **lineptr, size_t *n, FILE *stream);
 
 #endif
