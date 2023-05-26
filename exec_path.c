@@ -16,6 +16,7 @@ int exec_path(char *args[], int s_count, char *pg_name, int *status)
 	int command_found = 0;
 
 	(void) status;
+	(void) s_count;
 	token = strtok(path, ":");
 	if (path == NULL)
 	{
@@ -41,10 +42,9 @@ int exec_path(char *args[], int s_count, char *pg_name, int *status)
 	}
 	if (!command_found)
 	{
-		fprintf(stderr, ER_MSG, pg_name, s_count, args[0]);
-		exit(EXIT_FAILURE);
+		/** fprintf(stderr, ER_MSG, pg_name, s_count, args[0]); */
+		return (0);
 	}
-	/** _path(args, cmd_path, s_count, pg_name, status); */
 	execv(cmd_path, args);
 	free(cmd_path);
 	return (1);
