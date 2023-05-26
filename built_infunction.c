@@ -1,5 +1,5 @@
 #include "sys_headers.h"
-#define ERR "%s: %d: exit: Illegal number: %s\n"
+#define ERR "%s: %d: exit: Illegal number: %d\n"
 /**
  * built_infunction - executes commands that are local to the shell
  * @args: arguments passed to the program
@@ -21,8 +21,8 @@ int built_infunction(int argc, char *args[], int s_c, char *pg_name, int *st)
 			status = atoi(args[1]);
 			if (status < 0)
 			{
-				fprintf(stderr, ERR, pg_name, s_c, args[0]);
-				exit(EXIT_FAILURE);
+				fprintf(stderr, ERR, pg_name, s_c, status);
+				return(1);
 			}
 			exit(status);
 		}
