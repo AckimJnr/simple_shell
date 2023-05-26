@@ -13,23 +13,9 @@
 void _path(char *args[], char *path
 		, int s_count, char *pg_name, int *status)
 {
-	pid_t pid;
+	(void) s_count;
+	(void) pg_name;
+	(void) status;
 
-	pid = fork();
-
-	if (pid < 0)
-	{
-		perror(pg_name);
-		return;
-	}
-	else if (pid == 0)
-	{
-		if (execvp(path, args) < 0)
-		{
-			fprintf(stderr, ER_MSG, pg_name, s_count, args[0]);
-			return;
-		}
-	}
-	else
-		waitpid(pid, status, 0);
+	execv(path, args);
 }
