@@ -22,9 +22,9 @@ int built_infunction(int argc, char *args[], int s_c, char *pg_name, int *st)
 			if (status < 0)
 			{
 				fprintf(stderr, ERR, pg_name, s_c, args[0]);
-				exit_program(*st);
+				exit(EXIT_FAILURE);
 			}
-			exit_program(*st);
+			exit(status);
 		}
 		exit_program(*st);
 	}
