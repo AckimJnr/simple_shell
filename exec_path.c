@@ -45,7 +45,7 @@ int exec_path(char *args[], int s_count, char *pg_name, int *status)
 		/** fprintf(stderr, ER_MSG, pg_name, s_count, args[0]); */
 		return (0);
 	}
-	execv(cmd_path, args);
+	execve(cmd_path, args, NULL);
 	free(cmd_path);
 	return (1);
 }
