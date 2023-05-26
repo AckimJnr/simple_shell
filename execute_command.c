@@ -26,14 +26,11 @@ void execute_command(char *command, int session_counter, char *program_name)
 		argc++;
 		token = strtok(NULL, " \t\n");
 	}
-
 	args[argc] = NULL;
 	if (args[0] == NULL)
 		return;
 	if (built_infunction(argc, args, session_counter, program_name, &exit_status))
 		return;
-
-
 	pid = fork();
 
 	if (pid < 0)
@@ -43,9 +40,12 @@ void execute_command(char *command, int session_counter, char *program_name)
 	}
 	else if (pid == 0)
 	{
-		execve(args[0], args, NULL);
-		print_error(session_counter, args, program_name);
-		exit(EXIT_FAILURE);
+		if (execvp(args[0], args))
+		{
+			execve(args[0], args, NULL);
+			print_error(session_counter, args, program_name);
+			exit(EXIT_FAILURE);
+		}
 	}
 	else
 		waitpid(pid, &exit_status, 0);
