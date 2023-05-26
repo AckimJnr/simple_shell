@@ -21,8 +21,8 @@ void print_string(const char *);
 void exit_program(int status);
 int string_compare(char *string_1, char *string_2);
 void print_env(void);
-ssize_t _getline(char **line_ptr, size_t *buf_size, int fd);
-ssize_t read_chars(char **line_ptr, size_t *buf_size, int fd);
+ssize_t _getline(char **line_ptr, size_t *buf_size, FILE *);
+ssize_t read_chars(char **line_ptr, size_t *buf_size, FILE *);
 char *_strtok(char *string, char *delimeter);
 char *execute_from_path(char *cmd_name);
 size_t string_length(const char *str);
@@ -31,6 +31,6 @@ void print_error(int session_counter, char *args[], char *);
 int string_toint(char *str);
 int built_infunction(int argc, char *args[], int, char *, int *);
 int exec_path(char *args[], int s_count, char *pg_name, int *);
-void _path(char *args[], char *, int s_count, char *pg_name, int, int *);
+void _path(char *args[], char *, int s_count, char *pg_name, int *);
 
 #endif

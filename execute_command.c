@@ -26,7 +26,6 @@ void execute_command(char *command, int session_counter, char *program_name)
 		argc++;
 		token = strtok(NULL, " \t\n");
 	}
-
 	args[argc] = NULL;
 	if (args[0] == NULL)
 		return;
