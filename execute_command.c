@@ -40,7 +40,7 @@ void execute_command(char *command, int session_counter, char *program_name)
 	}
 	else if (pid == 0)
 	{
-		if (execvp(args[0], args))
+		if (exec_path(args, session_counter, program_name, &exit_status) != 1)
 		{
 			execve(args[0], args, NULL);
 			print_error(session_counter, args, program_name);
