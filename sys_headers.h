@@ -30,7 +30,7 @@ void print_integer(int number);
 void print_error(int session_counter, char *args[], char *);
 int string_toint(char *str);
 int built_infunction(int argc, char *args[], int, char *, int *);
-void exec_path(char *args[], int s_count, char *pg_name, int *);
+int exec_path(char *args[], int s_count, char *pg_name, int *);
 void _path(char *args[], char *, int s_count, char *pg_name, int, int *);
 
 #endif

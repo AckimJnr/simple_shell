@@ -32,8 +32,6 @@ void execute_command(char *command, int session_counter, char *program_name)
 		return;
 	if (built_infunction(argc, args, session_counter, program_name, &exit_status))
 		return;
-
-
 	pid = fork();
 
 	if (pid < 0)
@@ -43,9 +41,12 @@ void execute_command(char *command, int session_counter, char *program_name)
 	}
 	else if (pid == 0)
 	{
-		execve(args[0], args, NULL);
-		print_error(session_counter, args, program_name);
-		exit(EXIT_FAILURE);
+		if (exec_path(args, session_counter, program_name, &exit_status) != 1)
+		{
+			execve(args[0], args, NULL);
+			print_error(session_counter, args, program_name);
+			exit(EXIT_FAILURE);
+		}
 	}
 	else
 		waitpid(pid, &exit_status, 0);
