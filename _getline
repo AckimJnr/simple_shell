@@ -10,7 +10,7 @@
  * Return: Returns the number of lines read on success
  */
 
-ssize_t _getline(char **line_ptr, size_t *buf_size, int fd)
+ssize_t _getline(char **line_ptr, size_t *buf_size, FILE *stream)
 {
 	if (line_ptr == NULL || buf_size == NULL || fd < 0)
 		return (-1);
@@ -24,6 +24,6 @@ ssize_t _getline(char **line_ptr, size_t *buf_size, int fd)
 			return (-1);
 	}
 
-	return (read_chars(line_ptr, buf_size, fd));
+	return (read_chars(line_ptr, buf_size, stream));
 
 }

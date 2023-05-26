@@ -8,12 +8,11 @@
  *
  * Return: void;
  */
-void exec_path(char *args[], int s_count, char *pg_name, int *status)
+int exec_path(char *args[], int s_count, char *pg_name, int *status)
 {
 	char *path = getenv("PATH");
 	char *token;
 	char *cmd_path = NULL;
-	pid_t pid;
 	int command_found = 0;
 
 	token = strtok(path, ":");
@@ -44,6 +43,7 @@ void exec_path(char *args[], int s_count, char *pg_name, int *status)
 		fprintf(stderr, ER_MSG, pg_name, s_count, args[0]);
 		exit(EXIT_FAILURE);
 	}
-	pid = fork();
-	_path(args, cmd_path, s_count, pg_name, pid, status);
+	_path(args, cmd_path, s_count, pg_name, status);
+	free(cmd_path);
+	return (1);
 }
