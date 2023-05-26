@@ -22,7 +22,7 @@ int built_infunction(int argc, char *args[], int s_c, char *pg_name, int *st)
 			if (status < 0)
 			{
 				fprintf(stderr, ERR, pg_name, s_c, status);
-				return(1);
+				return (1);
 			}
 			exit(status);
 		}
