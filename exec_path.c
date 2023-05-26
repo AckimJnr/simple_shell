@@ -1,19 +1,18 @@
 #include "sys_headers.h"
-#define ER_MSG "%s: %d: %s: not found\n"
 /**
  * exec_path - execute function from path
  * @args: program arguments
  * @s_count: session counter
  * @pg_name: name of program
+ * @status: exit status
  *
  * Return: void;
  */
-void exec_path(char *args[], int s_count, char *pg_name)
+void exec_path(char *args[], int s_count, char *pg_name, int *status)
 {
 	char *path = getenv("PATH");
 	char *token;
 	char *cmd_path = NULL;
-	int status;
 	pid_t pid;
 	int command_found = 0;
 
@@ -46,6 +45,5 @@ void exec_path(char *args[], int s_count, char *pg_name)
 		exit(EXIT_FAILURE);
 	}
 	pid = fork();
-	_path(args, s_count, pg_name, pid, status);
-	free(cmd_path);
+	_path(args, cmd_path, s_count, pg_name, pid, status);
 }

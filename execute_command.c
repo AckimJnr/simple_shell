@@ -12,7 +12,8 @@
 void execute_command(char *command, int session_counter, char *program_name)
 {
 	char *args[ARGS_LIMIT];
-	int argc = 0, exit_status;
+	int argc = 0;
+	static int exit_status;
 	pid_t pid;
 
 	/* split the command to get the program path */
@@ -26,9 +27,13 @@ void execute_command(char *command, int session_counter, char *program_name)
 		token = strtok(NULL, " \t\n");
 	}
 
+	args[argc] = NULL;
+	if (args[0] == NULL)
+		return;
 	if (built_infunction(argc, args, session_counter, program_name, &exit_status))
 		return;
-	args[argc] = NULL;
+
+
 	pid = fork();
 
 	if (pid < 0)

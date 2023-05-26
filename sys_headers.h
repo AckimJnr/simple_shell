@@ -13,6 +13,7 @@
 #include <sys/stat.h>
 #include <stddef.h>
 #define ARGS_LIMIT 1024
+#define ER_MSG "%s: %d: %s: not found\n"
 
 extern char **environ;
 void execute_command(char *,  int, char *);
@@ -28,8 +29,8 @@ size_t string_length(const char *str);
 void print_integer(int number);
 void print_error(int session_counter, char *args[], char *);
 int string_toint(char *str);
-int built_infunction(int argc, char *args[], int session_counter, char *, int *);
-void exec_path(char *args[], int s_count, char *pg_name);
-void _path(char *args[], int s_count, char *pg_name, int, int);
+int built_infunction(int argc, char *args[], int, char *, int *);
+void exec_path(char *args[], int s_count, char *pg_name, int *);
+void _path(char *args[], char *, int s_count, char *pg_name, int, int *);
 
 #endif

@@ -37,5 +37,6 @@ void print_integer(int number)
 			buffer[length++] = digits[i];
 		}
 	}
-	write(STDOUT_FILENO, buffer, length);
+	if (write(STDOUT_FILENO, buffer, length) == -1)
+		exit(EXIT_FAILURE);
 }
