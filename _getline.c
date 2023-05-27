@@ -1,5 +1,4 @@
 #include "sys_headers.h"
-
 /**
  * __getline - custom getline to accept input from the
  * standard input stream
@@ -12,9 +11,10 @@
 
 ssize_t __getline(char **lineptr, size_t *n, FILE *stream)
 {
-	int c;
-	char *new_ptr = NULL;
-	size_t i = 0;
+	static char buffer[BUF_SIZE];
+	static size_t buf_pos;
+	static size_t buf_sz;
+	ssize_t bytes_read = 0;
 
 	if (lineptr == NULL || n == NULL || stream == NULL)
 		return (-1);
@@ -27,25 +27,6 @@ ssize_t __getline(char **lineptr, size_t *n, FILE *stream)
 		if (*lineptr == NULL)
 			return (-1);
 	}
-
-	while ((c = getc(stream)) != EOF)
-	{
-		if (i >= *n - 1)
-		{
-			*n *= 2;
-			new_ptr = (char *)realloc(*lineptr, *n);
-
-			if (new_ptr == NULL)
-			return (-1);
-			*lineptr = new_ptr;
-		}
-		(*lineptr)[i++] = c;
-
-		if (c == '\n')
-			break;
-	}
-	if (i == 0)
-		return (-1);
-	(*lineptr)[i] = '\0';
-	return (i);
+	bytes_read = read_chars(lineptr, n, buffer, &buf_pos, &buf_sz, stream);
+	return (bytes_read);
 }

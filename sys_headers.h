@@ -14,6 +14,7 @@
 #include <stddef.h>
 #define ARGS_LIMIT 1024
 #define ER_MSG "%s: %d: %s: not found\n"
+#define BUF_SIZE 1024
 
 extern char **environ;
 void execute_command(char *,  int, char *);
@@ -22,7 +23,7 @@ void exit_program(int status);
 int string_compare(char *string_1, char *string_2);
 void print_env(void);
 ssize_t _getline(char **line_ptr, size_t *buf_size, FILE *);
-ssize_t read_chars(char **line_ptr, size_t *buf_size, FILE *);
+ssize_t read_chars(char **, size_t *, char *, size_t *, size_t *, FILE *);
 char *_strtok(char *string, char *delimeter);
 char *execute_from_path(char *cmd_name);
 size_t string_length(const char *str);

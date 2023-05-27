@@ -29,6 +29,7 @@ int main(int argc, char *argv[])
 	while ((bytes_read = __getline
 				(&command, &buffer_size, stdin)) != EOF)
 	{
+		printf("\n%ld\n", bytes_read);
 		if (bytes_read == 1)
 		{
 			if (!ispiped)
