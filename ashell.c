@@ -26,7 +26,7 @@ int main(int argc, char *argv[])
 	if (!ispiped)
 		print_string("$ ");
 
-	while ((bytes_read = getline
+	while ((bytes_read = __getline
 				(&command, &buffer_size, stdin)) != EOF)
 	{
 		if (bytes_read == 1)

@@ -13,6 +13,7 @@
 ssize_t __getline(char **lineptr, size_t *n, FILE *stream)
 {
 	int c;
+	char *new_ptr = NULL;
 	size_t i = 0;
 
 	if (lineptr == NULL || n == NULL || stream == NULL)
@@ -32,7 +33,7 @@ ssize_t __getline(char **lineptr, size_t *n, FILE *stream)
 		if (i >= *n - 1)
 		{
 			*n *= 2;
-			char *new_ptr = (char *)realloc(*lineptr, *n);
+			new_ptr = (char *)realloc(*lineptr, *n);
 
 			if (new_ptr == NULL)
 			return (-1);
