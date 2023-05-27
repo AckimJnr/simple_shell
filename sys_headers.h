@@ -14,7 +14,7 @@
 #include <stddef.h>
 #define ARGS_LIMIT 1024
 #define ER_MSG "%s: %d: %s: not found\n"
-#define BUF_SIZE 1024
+#define BUF_SIZE 128
 
 extern char **environ;
 void execute_command(char *,  int, char *);
